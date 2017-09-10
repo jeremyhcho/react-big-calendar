@@ -55,7 +55,7 @@ class Popup extends React.Component {
     let { events, selected, eventComponent, eventWrapperComponent, ...props } = this.props;
 
     let { left, width, top } = this.props.position
-      , topOffset = ((this.state.rootClientHeight || 0) / 2) - document.querySelector('.rbc-month-row').clientHeight + 30
+      , topOffset = ((this.state.rootClientHeight || 0) / 2) - document.querySelector('.rbc-month-row').clientHeight
       , leftOffset = -100
 
     let style = {
