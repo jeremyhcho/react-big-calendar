@@ -59,7 +59,7 @@ class Popup extends React.Component {
       , leftOffset = -100
 
     let style = {
-      top: Math.max(0, top - topOffset),
+      top: top - topOffset,
       left: left - leftOffset,
       minWidth: width + (width / 2)
     }
