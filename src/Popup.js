@@ -19,6 +19,11 @@ const propTypes = {
   dayHeaderFormat: dateFormat
 }
 class Popup extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {}
+  }
 
   componentDidMount(){
     let { popupOffset = 5 } = this.props
