@@ -22,7 +22,7 @@ class Popup extends React.Component {
 
   componentDidMount(){
     let { popupOffset = 5 } = this.props
-      , { top, left, width, height } = getOffset(this.refs.root)
+      , { top, left, width, height } = getOffset(this.root)
       , viewBottom = window.innerHeight + getScrollTop(window)
       , viewRight = window.innerWidth + getScrollLeft(window)
       , bottom = top + height
@@ -44,7 +44,7 @@ class Popup extends React.Component {
     let { events, selected, eventComponent, eventWrapperComponent, ...props } = this.props;
 
     let { left, width, top } = this.props.position
-      , topOffset = (this.refs.root.clientHeight / 2) - document.querySelector('.rbc-month-row')[0].clientHeight + 30
+      , topOffset = (this.refs.root.clientHeight / 2) - document.querySelector('.rbc-month-row').clientHeight + 30
       , leftOffset = -100
 
     let style = {
@@ -54,7 +54,7 @@ class Popup extends React.Component {
     }
 
     return (
-      <div ref='root' style={style} className='rbc-overlay'>
+      <div ref={root => this.root = root} style={style} className='rbc-overlay'>
         <div className='rbc-overlay-header'>
           { localizer.format(props.slotStart, props.dayHeaderFormat, props.culture) }
         </div>
