@@ -38,13 +38,19 @@ class Popup extends React.Component {
 
       this.setState({ topOffset, leftOffset }) //eslint-disable-line
     }
+
+    this.setState({ rootClientHeight: this.root.clientHeight })
+  }
+
+  componentWillReceiveProps () {
+    this.setState({ rootClientHeight: this.root.clientHeight })
   }
 
   render() {
     let { events, selected, eventComponent, eventWrapperComponent, ...props } = this.props;
 
     let { left, width, top } = this.props.position
-      , topOffset = (this.refs.root.clientHeight / 2) - document.querySelector('.rbc-month-row').clientHeight + 30
+      , topOffset = (this.state.rootClientHeight / 2) - document.querySelector('.rbc-month-row').clientHeight + 30
       , leftOffset = -100
 
     let style = {
