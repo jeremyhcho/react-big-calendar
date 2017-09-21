@@ -52,8 +52,10 @@ class Popup extends React.Component {
       y: rect.y,
       top: rect.top,
       height: rect.height,
+      width: rect.width,
       bottom: rect.bottom,
-      left: rect.left
+      left: rect.left,
+      right: rect.right
     })
   }
 
@@ -63,8 +65,10 @@ class Popup extends React.Component {
       y: rect.y,
       top: rect.top,
       height: rect.height,
+      width: rect.width,
       bottom: rect.bottom,
-      left: rect.left
+      left: rect.left,
+      right: rect.right
     })
   }
 
@@ -76,36 +80,66 @@ class Popup extends React.Component {
       , leftOffset = -100
 
     const trueTop = top - topOffset
-
-    let style = {
-      top: this.state.bottom > window.innerHeight ? `calc(100% - ${this.state.height - 5}px)` : trueTop,
-      left: left - leftOffset,
-      minWidth: width + (width / 2)
-    }
-
-    const arrowTop = this.props.showMoreRef.getBoundingClientRect().top - 9
-    const arrowLeft = this.state.left || 0
-
-    return (
-      <div ref={root => this.root = root} style={style} className='rbc-overlay'>
-        <div style={{
+    const showMoreRectTop = this.props.showMoreRef.getBoundingClientRect().top - 9
+    const absoluteTop = this.state.bottom > window.innerHeight ? `calc(100% - ${this.state.height - 5}px)` : trueTop
+    const right = this.state.left + this.state.width < window.innerWidth
+    const positionStyles = {
+      leftPopup: {
+        main: {
+          top: absoluteTop,
+          left: left - this.state.width - 10,
+          minWidth: width + (width / 2)
+        },
+        smallArrow: {
           position: 'fixed',
-          left: `${arrowLeft - 8}px`,
-          top: `${arrowTop + 6}px`,
+          top: showMoreRectTop + 6,
+          borderTop: '9px solid transparent',
+          borderBottom: '9px solid transparent',
+          borderLeft: '9px solid #fff',
+          zIndex: 2
+        },
+        bigArrow: {
+          position: 'fixed',
+          top: showMoreRectTop + 5,
+          borderTop: '10px solid transparent',
+          borderBottom: '10px solid transparent',
+          borderLeft: '10px solid #E8E8E8',
+        }
+      },
+      rightPopup: {
+        main: {
+          top: absoluteTop,
+          left: left - leftOffset,
+          minWidth: width + (width / 2)
+        },
+        smallArrow: {
+          position: 'fixed',
+          left: (this.state.left || 0) - 8,
+          top: showMoreRectTop + 6,
           borderTop: '9px solid transparent',
           borderBottom: '9px solid transparent',
           borderRight: '9px solid #fff',
           zIndex: 2
-        }} />
-
-        <div style={{
+        },
+        bigArrow: {
           position: 'fixed',
-          left: `${arrowLeft - 10}px`,
-          top: `${arrowTop + 5}px`,
+          left: (this.state.left || 0) - 10,
+          top: showMoreRectTop + 5,
           borderTop: '10px solid transparent',
           borderBottom: '10px solid transparent',
           borderRight: '10px solid #E8E8E8'
-        }} />
+        }
+      }
+    }
+
+    return (
+      <div
+        ref={root => this.root = root}
+        style={right ? positionStyles.rightPopup.main : positionStyles.leftPopup.main}
+        className='rbc-overlay'
+      >
+        <div style={right ? positionStyles.rightPopup.smallArrow : positionStyles.leftPopup.smallArrow} />
+        <div style={right ? positionStyles.rightPopup.bigArrow : positionStyles.leftPopup.bigArrow} />
 
         <div className='rbc-overlay-header'>
           { localizer.format(props.slotStart, props.dayHeaderFormat, props.culture) }
