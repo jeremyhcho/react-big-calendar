@@ -93,7 +93,7 @@ class Popup extends React.Component {
         <div style={{
           position: 'fixed',
           left: `${arrowLeft - 8}px`,
-          top: `${arrowTop + 1}px`,
+          top: `${arrowTop + 6}px`,
           borderTop: '9px solid transparent',
           borderBottom: '9px solid transparent',
           borderRight: '9px solid #fff',
@@ -103,7 +103,7 @@ class Popup extends React.Component {
         <div style={{
           position: 'fixed',
           left: `${arrowLeft - 10}px`,
-          top: arrowTop,
+          top: `${arrowTop + 5}px`,
           borderTop: '10px solid transparent',
           borderBottom: '10px solid transparent',
           borderRight: '10px solid #E8E8E8'
