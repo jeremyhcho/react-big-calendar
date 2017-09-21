@@ -48,6 +48,8 @@ class Popup extends React.Component {
 
     const rect = this.root.getBoundingClientRect()
 
+    console.log(rect)
+
     this.setState({
       y: rect.y,
       top: rect.top,
