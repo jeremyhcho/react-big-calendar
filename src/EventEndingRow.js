@@ -104,7 +104,6 @@ class EventEndingRow extends React.Component {
   }
 
   showMore(slot, e) {
-    console.log("EventEndingRow showMoreRef: ", this.showMoreRef)
     e.preventDefault()
     this.props.onShowMore(slot, this.showMoreRef)
   }

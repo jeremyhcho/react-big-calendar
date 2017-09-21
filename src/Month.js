@@ -302,7 +302,7 @@ class MonthView extends React.Component {
     //cancel any pending selections so only the event click goes through.
     this.clearSelection()
 
-    console.log("Month handleShowMore:", ref)
+    console.log(popup)
 
     if (popup) {
       let position = getPosition(cell, findDOMNode(this))
@@ -314,7 +314,7 @@ class MonthView extends React.Component {
       notify(onDrillDown, [date, getDrilldownView(date) || views.DAY])
     }
 
-    notify(onShowMore, [events, date, slot])
+    notify(onShowMore, [events, date, slot, ref])
   }
 
   selectDates(slotInfo) {

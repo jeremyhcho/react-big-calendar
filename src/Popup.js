@@ -63,7 +63,6 @@ class Popup extends React.Component {
       , leftOffset = -100
 
     const trueTop = top - topOffset
-    console.log(this.props.showMoreRef)
 
     let style = {
       top: this.state.bottom > window.innerHeight ? `calc(100% - ${this.state.height - 35}px)` : trueTop,
