@@ -58,8 +58,10 @@ class Popup extends React.Component {
       , topOffset = ((this.state.rootClientHeight || 0) / 2) - document.querySelector('.rbc-month-row').clientHeight + 30
       , leftOffset = -100
 
+    const trueTop = top - topOffset
+
     let style = {
-      top: top - topOffset,
+      top: trueTop + this.state.rootClientHeight > window.innerHeight ? `calc(100% - ${trueTop + this.state.rootClientHeight - window.innerHeight - 20}px)` : trueTop,
       left: left - leftOffset,
       minWidth: width + (width / 2)
     }
