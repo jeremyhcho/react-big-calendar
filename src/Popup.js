@@ -87,7 +87,7 @@ class Popup extends React.Component {
       leftPopup: {
         main: {
           top: absoluteTop,
-          left: left - this.state.width - 10,
+          left: left - (this.state.width || 0) - 10,
           minWidth: width + (width / 2)
         },
         smallArrow: {
