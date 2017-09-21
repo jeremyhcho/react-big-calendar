@@ -19,6 +19,7 @@ const propTypes = {
   dayHeaderFormat: dateFormat,
   showMoreRef: PropTypes.object
 }
+
 class Popup extends React.Component {
   constructor(props) {
     super(props)
@@ -63,7 +64,6 @@ class Popup extends React.Component {
       , leftOffset = -100
 
     const trueTop = top - topOffset
-    console.log(this.props.showMoreRef)
 
     let style = {
       top: this.state.bottom > window.innerHeight ? `calc(100% - ${this.state.height - 35}px)` : trueTop,
@@ -71,8 +71,29 @@ class Popup extends React.Component {
       minWidth: width + (width / 2)
     }
 
+    const showMoreTop = this.props.showMoreRef.getBoundingClientRect().top - 9
+    const showMoreLeft = left - leftOffset - 11
+
     return (
       <div ref={root => this.root = root} style={style} className='rbc-overlay'>
+        <div style={{
+          position: 'fixed',
+          left: showMoreLeft - 9,
+          top: showMoreTop,
+          borderTop: '9px solid transparent',
+          borderBottom: '9px solid transparent',
+          borderRight: '9px solid #fff'
+        }} />
+
+        <div style={{
+          position: 'fixed',
+          left: showMoreLeft,
+          top: showMoreTop,
+          borderTop: '10px solid transparent',
+          borderBottom: '10px solid transparent',
+          borderRight: '10px solid #E8E8E8'
+        }} />
+
         <div className='rbc-overlay-header'>
           { localizer.format(props.slotStart, props.dayHeaderFormat, props.culture) }
         </div>
