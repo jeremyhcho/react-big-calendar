@@ -302,6 +302,8 @@ class MonthView extends React.Component {
     //cancel any pending selections so only the event click goes through.
     this.clearSelection()
 
+    console.log("Month handleShowMore:", ref)
+
     if (popup) {
       let position = getPosition(cell, findDOMNode(this))
 

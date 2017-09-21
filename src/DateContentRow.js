@@ -63,6 +63,7 @@ class DateContentRow extends React.Component {
   }
 
   handleShowMore = (slot, ref) => {
+    console.log("DateContentRow handleShowMore:", ref)
     const { range, onShowMore } = this.props;
     let row = qsa(findDOMNode(this), '.rbc-row-bg')[0]
 
