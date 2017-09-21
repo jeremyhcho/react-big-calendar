@@ -44,26 +44,27 @@ class Popup extends React.Component {
       this.setState({ topOffset, leftOffset }) //eslint-disable-line
     }
 
-    this.setState({ rootClientHeight: this.root.clientHeight })
+    const rect = this.root.getBoundingClientRect()
+
+    this.setState({ ...rect })
   }
 
   componentWillReceiveProps () {
-    this.setState({ rootClientHeight: this.root.clientHeight })
+    const rect = this.root.getBoundingClientRect()
+    this.setState({ ...rect })
   }
 
   render() {
     let { events, selected, eventComponent, eventWrapperComponent, ...props } = this.props;
 
     let { left, width, top } = this.props.position
-      , topOffset = ((this.state.rootClientHeight || 0) / 2) - document.querySelector('.rbc-month-row').clientHeight + 30
+      , topOffset = ((this.state.height || 0) / 2) - document.querySelector('.rbc-month-row').clientHeight + 30
       , leftOffset = -100
 
     const trueTop = top - topOffset
-    console.log('trueTop:', trueTop)
-    console.log('rootClientHeight:', this.state.rootClientHeight)
 
     let style = {
-      top: trueTop - this.state.rootClientHeight > window.innerHeight ? `calc(100% - ${trueTop - this.state.rootClientHeight - window.innerHeight - 20}px)` : trueTop,
+      top: this.state.bottom > window.innerHeight ? `calc(100% - ${this.state.height - 20}px)` : trueTop,
       left: left - leftOffset,
       minWidth: width + (width / 2)
     }
