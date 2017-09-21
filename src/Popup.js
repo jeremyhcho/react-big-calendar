@@ -80,7 +80,7 @@ class Popup extends React.Component {
     const trueTop = top - topOffset
 
     let style = {
-      top: this.state.bottom > window.innerHeight ? `calc(100% - ${this.state.height - 35}px)` : trueTop,
+      top: this.state.bottom > window.innerHeight ? `calc(100% - ${this.state.height - 5}px)` : trueTop,
       left: left - leftOffset,
       minWidth: width + (width / 2)
     }
@@ -92,7 +92,7 @@ class Popup extends React.Component {
       <div ref={root => this.root = root} style={style} className='rbc-overlay'>
         <div style={{
           position: 'fixed',
-          left: `${arrowLeft - 9}px`,
+          left: `${arrowLeft - 8}px`,
           top: `${arrowTop + 1}px`,
           borderTop: '9px solid transparent',
           borderBottom: '9px solid transparent',
@@ -102,7 +102,7 @@ class Popup extends React.Component {
 
         <div style={{
           position: 'fixed',
-          left: `${arrowLeft - 11}px`,
+          left: `${arrowLeft - 10}px`,
           top: arrowTop,
           borderTop: '10px solid transparent',
           borderBottom: '10px solid transparent',
