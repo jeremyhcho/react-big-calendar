@@ -62,7 +62,7 @@ class DateContentRow extends React.Component {
     )
   }
 
-  handleShowMore = (slot) => {
+  handleShowMore = (slot, ref) => {
     const { range, onShowMore } = this.props;
     let row = qsa(findDOMNode(this), '.rbc-row-bg')[0]
 
@@ -73,7 +73,7 @@ class DateContentRow extends React.Component {
       .filter(seg => isSegmentInSlot(seg, slot))
       .map(seg => seg.event)
 
-    onShowMore(events, range[slot-1], cell, slot)
+    onShowMore(events, range[slot-1], cell, slot, ref)
   }
 
   createHeadingRef = r => {

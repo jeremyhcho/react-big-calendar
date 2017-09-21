@@ -16,7 +16,8 @@ const propTypes = {
   selected: PropTypes.object,
   eventComponent: elementType,
   eventWrapperComponent: elementType,
-  dayHeaderFormat: dateFormat
+  dayHeaderFormat: dateFormat,
+  showMoreRef: PropTypes.object
 }
 class Popup extends React.Component {
   constructor(props) {
@@ -62,10 +63,10 @@ class Popup extends React.Component {
       , leftOffset = -100
 
     const trueTop = top - topOffset
-    console.log("state: ", this.state)
+    console.log(this.props.showMoreRef)
 
     let style = {
-      top: this.state.bottom > window.innerHeight ? `calc(100% - ${this.state.height - 20}px)` : trueTop,
+      top: this.state.bottom > window.innerHeight ? `calc(100% - ${this.state.height - 35}px)` : trueTop,
       left: left - leftOffset,
       minWidth: width + (width / 2)
     }
