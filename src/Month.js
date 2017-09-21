@@ -266,7 +266,7 @@ class MonthView extends React.Component {
           slotStart={overlay.date}
           slotEnd={overlay.end}
           onSelect={this.handleSelectEvent}
-          showMoreRef={this.state.showMoreRef}
+          showMoreRef={overlay.showMoreRef}
         />
       </Overlay>
     )
@@ -301,8 +301,6 @@ class MonthView extends React.Component {
     const { popup, onDrillDown, onShowMore, getDrilldownView } = this.props
     //cancel any pending selections so only the event click goes through.
     this.clearSelection()
-
-    console.log(popup)
 
     if (popup) {
       let position = getPosition(cell, findDOMNode(this))
