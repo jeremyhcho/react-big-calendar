@@ -153,7 +153,6 @@ class Popup extends React.Component {
               event={event}
               eventComponent={eventComponent}
               eventWrapperComponent={eventWrapperComponent}
-              selected={isSelected(event, selected)}
             />
           )
         }
