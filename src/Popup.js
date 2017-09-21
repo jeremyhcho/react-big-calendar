@@ -48,12 +48,24 @@ class Popup extends React.Component {
 
     const rect = this.root.getBoundingClientRect()
 
-    this.setState({ y: rect.y, top: rect.top, height: rect.height, bottom: rect.bottom })
+    this.setState({
+      y: rect.y,
+      top: rect.top,
+      height: rect.height,
+      bottom: rect.bottom,
+      left: rect.left
+    })
   }
 
   componentWillReceiveProps () {
     const rect = this.root.getBoundingClientRect()
-    this.setState({ y: rect.y, top: rect.top, height: rect.height, bottom: rect.bottom })
+    this.setState({
+      y: rect.y,
+      top: rect.top,
+      height: rect.height,
+      bottom: rect.bottom,
+      left: rect.left
+    })
   }
 
   render() {
@@ -71,15 +83,15 @@ class Popup extends React.Component {
       minWidth: width + (width / 2)
     }
 
-    const showMoreTop = this.props.showMoreRef.getBoundingClientRect().top - 9
-    const showMoreLeft = left - leftOffset - 11
+    const arrowTop = this.props.showMoreRef.getBoundingClientRect().top - 9
+    const arrowLeft = this.state.left
 
     return (
       <div ref={root => this.root = root} style={style} className='rbc-overlay'>
         <div style={{
           position: 'fixed',
-          left: showMoreLeft - 9,
-          top: showMoreTop,
+          left: arrowLeft - 9,
+          top: arrowTop,
           borderTop: '9px solid transparent',
           borderBottom: '9px solid transparent',
           borderRight: '9px solid #fff'
@@ -87,8 +99,8 @@ class Popup extends React.Component {
 
         <div style={{
           position: 'fixed',
-          left: showMoreLeft,
-          top: showMoreTop,
+          left: arrowLeft - 11,
+          top: arrowTop,
           borderTop: '10px solid transparent',
           borderBottom: '10px solid transparent',
           borderRight: '10px solid #E8E8E8'
