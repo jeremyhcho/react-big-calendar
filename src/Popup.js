@@ -45,15 +45,13 @@ class Popup extends React.Component {
     }
 
     const rect = this.root.getBoundingClientRect()
-    console.log('cDM: ', rect)
 
-    this.setState({ ...rect })
+    this.setState({ y: rect.y, top: rect.top, height: rect.height })
   }
 
   componentWillReceiveProps () {
     const rect = this.root.getBoundingClientRect()
-    console.log('cWRP: ', rect)
-    this.setState({ ...rect })
+    this.setState({ y: rect.y, top: rect.top, height: rect.height })
   }
 
   render() {
