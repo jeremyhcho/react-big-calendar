@@ -57,7 +57,7 @@ class EventCell extends React.Component {
             'rbc-event-continues-prior': continuesPrior,
             'rbc-event-continues-after': continuesAfter
           })}
-          onClick={(e) => onSelect(event, e)}
+          // onClick={(e) => onSelect(event, e)}
         >
           <div className='rbc-event-content' title={title}>
             { Event
