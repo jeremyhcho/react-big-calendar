@@ -93,7 +93,7 @@ class Popup extends React.Component {
         smallArrow: {
           position: 'fixed',
           top: (showMoreRectTop || 0) + 6,
-          right: (this.state.right || 0),
+          left: (this.state.right || 0),
           borderTop: '9px solid transparent',
           borderBottom: '9px solid transparent',
           borderLeft: '9px solid #fff',
@@ -101,7 +101,7 @@ class Popup extends React.Component {
         },
         bigArrow: {
           position: 'fixed',
-          right: (this.state.right || 0),
+          left: (this.state.right || 0),
           top: (showMoreRectTop || 0) + 5,
           borderTop: '10px solid transparent',
           borderBottom: '10px solid transparent',
