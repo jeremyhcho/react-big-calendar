@@ -61,7 +61,7 @@ class Popup extends React.Component {
     const trueTop = top - topOffset
 
     let style = {
-      top: trueTop + this.state.rootClientHeight > window.innerHeight ? `calc(100% - ${trueTop + this.state.rootClientHeight - window.innerHeight - 20}px)` : trueTop,
+      top: trueTop - this.state.rootClientHeight > window.innerHeight ? `calc(100% - ${trueTop - this.state.rootClientHeight - window.innerHeight - 20}px)` : trueTop,
       left: left - leftOffset,
       minWidth: width + (width / 2)
     }
