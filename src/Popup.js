@@ -86,13 +86,13 @@ class Popup extends React.Component {
     }
 
     const arrowTop = this.props.showMoreRef.getBoundingClientRect().top - 9
-    const arrowLeft = this.state.left
+    const arrowLeft = this.state.left || 0
 
     return (
       <div ref={root => this.root = root} style={style} className='rbc-overlay'>
         <div style={{
           position: 'fixed',
-          left: arrowLeft - 9,
+          left: `${arrowLeft - 9}px`,
           top: arrowTop,
           borderTop: '9px solid transparent',
           borderBottom: '9px solid transparent',
@@ -101,7 +101,7 @@ class Popup extends React.Component {
 
         <div style={{
           position: 'fixed',
-          left: arrowLeft - 11,
+          left: `${arrowLeft - 11}px`,
           top: arrowTop,
           borderTop: '10px solid transparent',
           borderBottom: '10px solid transparent',
